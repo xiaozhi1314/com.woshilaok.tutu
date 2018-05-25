@@ -1,13 +1,18 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
+  <div id="app" class="container">
+    <app-header></app-header>
     <router-view/>
+    <app-footer></app-footer>
   </div>
 </template>
 
 <script>
+import AppHeader from '@/components/AppHeader'
+import AppFooter from '@/components/AppFooter'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {AppHeader, AppFooter}
 }
 </script>
 
