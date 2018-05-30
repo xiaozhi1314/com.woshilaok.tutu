@@ -2,20 +2,20 @@
   <div class="photoalbum">
     <h2>主题</h2>
     <div class="images row">
-        <div class="card border-secondary image-card" v-for="(item, index) in albumList" :key="index">
-            <!-- <div class="card-header"></div> -->
-            <img class="card-img-top img-fluid" @click="showPhotoAlbumClick(item.id)" :src="item.coverImg">
-            <div class="card-body">
-                <h4 class="card-title">{{ item.title }}</h4>
-                <!-- <p class="card-text lead text-left">{{ item.desc }}</p> -->
-                <p class="card-text text-right">{{ item.formatTime }}</p>
-            </div>
-            <!-- <div class="card-footer">
-                <span class="col-sm-4">阅读数</span>
-                <span class="col-sm-4">阅读数</span>
-                <span class="col-sm-4">阅读数</span>
-            </div> -->
+      <div class="card border-secondary image-card" v-for="(item, index) in albumList" :key="index">
+        <!-- <div class="card-header"></div> -->
+        <img class="card-img-top img-fluid" @click="showPhotoAlbumClick(item.id)" :src="item.coverImg">
+        <div class="card-body">
+            <h4 class="card-title">{{ item.title }}</h4>
+            <!-- <p class="card-text lead text-left">{{ item.desc }}</p> -->
+            <p class="card-text text-right">{{ item.formatTime }}</p>
         </div>
+        <!-- <div class="card-footer">
+            <span class="col-sm-4">阅读数</span>
+            <span class="col-sm-4">阅读数</span>
+            <span class="col-sm-4">阅读数</span>
+        </div> -->
+      </div>
     </div>
     <br>
     <br>
@@ -53,17 +53,23 @@ export default {
     ...mapState({
       isEnd: state => state.PhotoAlbum.isEnd,
       pageIndex: state => state.PhotoAlbum.pageIndex,
+      currentPhotoTag: state => state.currentPhotoTag,
       albumList: state => state.PhotoAlbum.albumList,
     })
+  },
+  watch: {
+    currentPhotoTag: function(newValue, oldValue){
+      this.$store.dispatch('getAlbumList', {tags:this.currentPhotoTag, page:1});
+    }
   },
   methods:{
     loadMore(){
 			if(this.isEnd === false){
-				this.$store.dispatch('getAlbumList', {tags:'', page:this.pageIndex});
+				this.$store.dispatch('getAlbumList', {tags:this.currentPhotoTag, page:this.pageIndex});
 			}
     },
     showPhotoAlbumClick(albumId){
-			this.$store.dispatch('getAlbumDetail', {id:albumId, pageIndex:1});
+			this.$store.dispatch('getAlbumDetail', {id:albumId, page:1});
       this.$store.commit('setIsShow', true);
     }
   },
@@ -75,11 +81,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    .card{
-        width:360px;
-        margin: 10px 10px;
-    }
-    .card-img-top{
-        background-image: url('~@/assets/default_300x200.png');
-    }
+  .card{
+    width:360px;
+    margin: 10px 10px;
+  }
+  .card-img-top{
+    background-image: url('~@/assets/default_300x200.png');
+  }
 </style>

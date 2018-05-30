@@ -1,6 +1,7 @@
 <template>
   <div id="app" class="container">
     <app-header></app-header>
+    <br>
     <router-view/>
     <app-footer></app-footer>
   </div>
@@ -13,6 +14,9 @@ import AppFooter from '@/components/AppFooter'
 export default {
   name: 'App',
   components: {AppHeader, AppFooter},
+  mounted(){
+    this.$store.dispatch('getPhotoTagsList', {});
+  }
 }
 </script>
 

@@ -28,7 +28,11 @@ const actions = {
         }else{
           context.commit('setPageIndex', ++context.state.pageIndex);
         }
-        context.commit('addAlbumList', response.data.rows);
+        if(requestParams['page'] == 1){
+          context.commit('setAlbumList', response.data.rows);
+        }else{
+          context.commit('addAlbumList', response.data.rows);
+        }
       }
       context.commit('setWaitResult', response.message);
       context.commit('setWaitStatus', false);

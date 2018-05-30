@@ -25,7 +25,11 @@ const actions = {
         if(response.data.nextPageIndex === '-1'){
           context.commit('setIsEnd', true);
         }
-        context.commit('addAlbumDetail', response.data.rows);
+        if(requestParams['page'] == 1){
+          context.commit('setAlbumDetail', response.data.rows);
+        }else{
+          context.commit('addAlbumDetail', response.data.rows);
+        }
       }
       context.commit('setWaitResult', response.message);
       context.commit('setWaitStatus', false);
