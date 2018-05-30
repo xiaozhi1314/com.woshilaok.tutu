@@ -2,12 +2,19 @@
   <div class="photoalbum">
     <h2>主题</h2>
     <div class="images row">
-        <div class="card image-card" v-for="(item, index) in images" :key="index" @click="showPhotoAlbumClick">
-            <img class="card-img-top img-fluid" :src="item.url+index">
+        <div class="card border-secondary image-card" v-for="(item, index) in albumList" :key="index">
+            <!-- <div class="card-header"></div> -->
+            <img class="card-img-top img-fluid" @click="showPhotoAlbumClick(item.id)" :src="item.coverImg">
             <div class="card-body">
                 <h4 class="card-title">{{ item.title }}</h4>
-                <p class="card-text">{{ item.desc }}</p>
+                <!-- <p class="card-text lead text-left">{{ item.desc }}</p> -->
+                <p class="card-text text-right">{{ item.formatTime }}</p>
             </div>
+            <!-- <div class="card-footer">
+                <span class="col-sm-4">阅读数</span>
+                <span class="col-sm-4">阅读数</span>
+                <span class="col-sm-4">阅读数</span>
+            </div> -->
         </div>
     </div>
     <br>
@@ -39,26 +46,29 @@ export default {
   components: {ShowPhotoAlbum},
   data () {
     return {
-        showPhotoAlbum: false,
-        themeList: ['主题一','主题二','主题三','主题四','主题五',],
-        images: [
-            { 'url': 'http://placehold.it/300x200?text=', 'title': 'Jane Doe', 'desc': 'Some example text some example text. Jane Doe is an architect and engineer'},
-        ]
+      showPhotoAlbum: false,
     }
   },
+  computed: {
+    ...mapState({
+      isEnd: state => state.PhotoAlbum.isEnd,
+      pageIndex: state => state.PhotoAlbum.pageIndex,
+      albumList: state => state.PhotoAlbum.albumList,
+    })
+  },
   methods:{
-      loadMore(){
-          let item = { 'url': 'http://placehold.it/300x200?text=', 'title': 'Jane Doe', 'desc': 'Some example text some example text. Jane Doe is an architect and engineer'};
-          for(let i=0; i< 10; i++){
-              this.images.push(item);
-          }
-      },
-      showPhotoAlbumClick(){
-          this.$store.commit('setIsShow', true);
-      }
+    loadMore(){
+			if(this.isEnd === false){
+				this.$store.dispatch('getAlbumList', {tags:'', page:this.pageIndex});
+			}
+    },
+    showPhotoAlbumClick(albumId){
+			this.$store.dispatch('getAlbumDetail', {id:albumId, pageIndex:1});
+      this.$store.commit('setIsShow', true);
+    }
   },
   mounted(){
-      this.loadMore();
+		this.$store.dispatch('getAlbumList', []);
   }
 }
 </script>

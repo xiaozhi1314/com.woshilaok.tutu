@@ -3,8 +3,8 @@
     <div class="full-header full-float-layer-close" @click="closePhotoAlbum"></div>
     <div class="full-body">
       <div class="white_content">
-        <ul class="list-inline photoitem" v-for="(item, index) in imageList" :key="index">
-          <li class="list-inline-item"><img :src="item" /></li>
+        <ul class="list-inline photoitem" v-for="(item, index) in albumDetail" :key="index">
+          <li class="list-inline-item"><img :src="item.imgUrl" /></li>
         </ul>
       </div>
     </div>
@@ -24,13 +24,11 @@ export default {
   },
   computed: {
     ...mapState({
-      isShow: state => state.ShowPhotoAlbum.isShow
+      isShow: state => state.ShowPhotoAlbum.isShow,
+      albumDetail: state => state.ShowPhotoAlbum.albumDetail,
     })
   },
   watch: {
-    // isShow: function(newValue, oldValue){
-    //   this.isShow = newValue;
-    // }
   },
   methods: {
     closePhotoAlbum(){
@@ -38,10 +36,6 @@ export default {
     }
   },
   mounted(){
-    let imageItem = 'http://placehold.it/1800x1800?text=';
-    for(let i=0; i<10; i++){
-      this.imageList.push(imageItem+i);
-    }
   }
 }
 </script>
@@ -56,9 +50,9 @@ export default {
     height: 100%;
     background-color: rgb(95, 95, 95); 
     z-index:1001; 
-    -moz-opacity: 0.8; 
-    opacity:.80; 
-    filter: alpha(opacity=88); 
+    -moz-opacity: 1; 
+    opacity:1; 
+    filter: alpha(opacity=0); 
   }
   .full-float-layer-close{
     position: absolute; 

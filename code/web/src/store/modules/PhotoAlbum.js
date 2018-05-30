@@ -7,25 +7,28 @@ Vue.use(Vuex);
 const state = {
   isShow: false,
   isEnd: false,
-  albumDetail: [],
+  pageIndex: 1,
+  albumList: [],
 }
 const getters = {
 };
 
 const actions = {
-  getAlbumDetail(context, requestParams){
+  getAlbumList(context, requestParams){
     context.commit('setWaitStatus', true);
-    Api.networkRequest(Api.serverUrlList.getPhotoAlbumDetail, {
+    Api.networkRequest(Api.serverUrlList.getPhotoAlbumList, {
       __type: 'jsonp',
-      id: requestParams['id'],
+      tags: requestParams['tags'],
       pageIndex: requestParams['page'],
     }).then(function(response){
       // 处理业务逻辑
       if(response.success === '1'){
         if(response.data.nextPageIndex === '-1'){
           context.commit('setIsEnd', true);
+        }else{
+          context.commit('setPageIndex', ++context.state.pageIndex);
         }
-        context.commit('addAlbumDetail', response.data.rows);
+        context.commit('addAlbumList', response.data.rows);
       }
       context.commit('setWaitResult', response.message);
       context.commit('setWaitStatus', false);
@@ -40,11 +43,14 @@ const mutations = {
   setIsEnd(state, isEnd){
     state.isEnd = isEnd;
   },
-  setAlbumDetail(state, list){
-    state.albumDetail = list;
+  setPageIndex(state, pageIndex){
+    state.pageIndex = pageIndex;
   },
-  addAlbumDetail(state, list){
-    state.albumDetail = state.albumDetail.concat(list);
+  setAlbumList(state, list){
+    state.albumList = list;
+  },
+  addAlbumList(state, list){
+    state.albumList = state.albumList.concat(list);
   }
 }
 

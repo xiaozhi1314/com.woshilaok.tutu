@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Api from '@/api/api.js'
+import PhotoAlbum from '@/store/modules/PhotoAlbum.js'
 import ShowPhotoAlbum from '@/store/modules/ShowPhotoAlbum.js'
 
 Vue.use(Vuex);
@@ -33,6 +34,7 @@ export default new Vuex.Store({
     actions,
     mutations,
     modules: {
+        PhotoAlbum,
         ShowPhotoAlbum,
         // products
     },
