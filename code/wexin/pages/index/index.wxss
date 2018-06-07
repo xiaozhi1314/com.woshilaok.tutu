@@ -1,0 +1,84 @@
+/**index.wxss**/
+.header{
+  height: 180rpx;
+  width: 100%;
+}
+.header-left{
+  position:absolute;
+  width: 60%;
+  top:30rpx;
+}
+.header-right{
+  width: 40%;
+  overflow:hidden;
+  position: absolute;
+  right: 0rpx;
+  top: 80rpx;
+}
+.userinfo-avatar{
+  border-radius: 5rpx;
+  width: 150rpx;
+  height: 150rpx;
+  margin: 4rpx 10rpx 24rpx 22rpx;
+}
+.userinfo-name{
+  position:absolute;
+  top:44rpx;
+  color: #5B5B5B;
+  font-family: Segoe UI;
+  font-weight: Bold;
+  font-size: 15px;
+}
+.userinfo-money{
+  position:absolute;
+  top:90rpx;
+  color: #FF0000;
+  font-family: Segoe UI;
+  font-weight: Regular;
+  font-size: 15px;
+}
+
+.action-refresh{
+  margin:0rpx 0rpx 0rpx 14rpx;
+  width: 64rpx;
+  height: 64rpx;
+  float:right;
+}
+.action-invite{
+  margin:0rpx 42rpx 0rpx 14rpx;
+  width: 64rpx;
+  height: 64rpx;
+  float:right;
+}
+
+.ad{
+  width: 100%;
+  text-align: center;
+}
+.ad-item{
+  height: 500rpx;
+  position: relative;
+  margin:40rpx 0rpx;
+}
+.ad-image{
+   width:100%;
+}
+.ad-timer{
+  border-width:2px;
+  border-color:#707070;
+  border-radius:45rpx;
+  border-style:solid;
+  width:90rpx;
+  height:90rpx;
+
+  position:absolute;
+  top:0rpx;
+  right:0.5px;
+  margin: 4rpx 4rpx 0rpx 0rpx;
+  z-index: 10;
+
+  color: #707070;
+  font-family: Segoe UI;
+  font-weight: Regular;
+  font-size: 20px;
+}

@@ -1,0 +1,13 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#444444",
+    "navigationBarTitleText": "学习小程序",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#0B2C35"
+  }
+}

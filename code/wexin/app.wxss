@@ -1,0 +1,21 @@
+/**app.wxss**/
+page, view, scroll-view, swiper, movable-view, cover-view, icon, text, rich-text,
+progress, button, checkbox, form, input, label, picker, picker-view, radio,
+slider, switch, textarea, navigator, audio, image, video, map, canvas, open-data,
+contact-button {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
+}
+page {
+  background: #858585;
+  color: #333;
+}
+
+.block-center{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
