@@ -2,13 +2,21 @@
 //获取应用实例
 const app = getApp()
 
+// 1：普通用户 2：分销商 3：内容提供者 4：消费者
+const USER_ROLE_NORMAL            = 1;
+const USER_ROLE_DISTRIBUTORS      = 2;
+const USER_ROLE_CONTENTPROVIDER   = 3;
+const USER_ROLE_CONSUMERS         = 4;
+
+
+
 Page({
   data: {
     userInfo: {
-      // avatar:'../images/avatar.svg',
-      name: '我是王宝强',
-      money: '000.01',
-      avatar:'../../images/logo.png',
+      name: '我是王宝强1',
+      money: '102.01',
+      avatar: '/images/logo.png',
+      userRole: USER_ROLE_DISTRIBUTORS
     },
     adList: [
       {adUrl: '../../images/ad_001.png', adTimer: 10},
@@ -26,7 +34,24 @@ Page({
       {adUrl: '../../images/ad_001.png', adTimer: 10},
       {adUrl: '../../images/ad_001.png', adTimer: 10},
       {adUrl: '../../images/ad_001.png', adTimer: 10},
-    ]
+    ],
+    earningsList: [
+      {time: '2018年6月8日', earnings: '0.0001'},
+      {time: '2018年6月8日', earnings: '0.0001'},
+      {time: '2018年6月8日', earnings: '0.0001'},
+      {time: '2018年6月8日', earnings: '0.0001'},
+      {time: '2018年6月8日', earnings: '0.0001'},
+      {time: '2018年6月8日', earnings: '0.0001'},
+      {time: '2018年6月8日', earnings: '0.0001'},
+      {time: '2018年6月8日', earnings: '0.0001'},
+      {time: '2018年6月8日', earnings: '0.0001'},
+      {time: '2018年6月8日', earnings: '0.0001'},
+      {time: '2018年6月8日', earnings: '0.0001'},
+      {time: '2018年6月8日', earnings: '0.0001'},
+      {time: '2018年6月8日', earnings: '0.0001'},
+    ], 
+    isShowAd: false,
+    isSHowEarnings: true    
   },
   //事件处理函数
   bindViewTap: function() {
@@ -55,8 +80,25 @@ Page({
       })
     }
   },
-  getUserInfo: function(e) {
+  clickAvatar: function(){
+    // 判断用户角色
+    switch(this.data.userInfo.userRole){
+      case USER_ROLE_DISTRIBUTORS:
+        break;
+      case USER_ROLE_CONTENTPROVIDER:
+        break;
+      case USER_ROLE_CONSUMERS:
+        break;
+      case USER_ROLE_NORMAL:
+      default:
+        this.switchNormalRole();
+      break;
+    }
+  },
+  switchNormalRole: function(){
     this.setData({
+      isShowAd: !this.data.isShowAd,
+      isSHowEarnings: !this.data.isSHowEarnings
     })
   }
 })

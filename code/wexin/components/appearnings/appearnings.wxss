@@ -1,0 +1,30 @@
+/* components/appearnings/appearnings.wxss */
+.block-center{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.earnings-item{
+  width: 718rpx;
+  height: 186rpx;
+  margin:20rpx auto 20rpx;
+  flex-direction:column;
+
+  border-width:2px;
+  border-color:#707070;
+  /* border-radius:45rpx; */
+  border-style:none none solid none;
+
+  
+  color: #FFFFFF;
+  font-family: Segoe UI;
+  font-weight: Regular;
+  font-size: 35rpx;
+}
+
+.earnings-timer{
+  margin: 55rpx auto auto 120rpx;
+}
+.earnings-earnings{
+  margin: auto auto 20rpx 120rpx;
+}

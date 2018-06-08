@@ -1,0 +1,102 @@
+/* pages/appheader/appheader.wxss */
+.block-center{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.header{
+  height: 180rpx;
+  width: 100%;
+}
+.header-left{
+  position:absolute;
+  width: 60%;
+  top:30rpx;
+}
+.header-right{
+  width: 40%;
+  overflow:hidden;
+  position: absolute;
+  right: 0rpx;
+  top: 80rpx;
+}
+.userinfo-avatar{
+  border-radius: 5rpx;
+  width: 150rpx;
+  height: 150rpx;
+  margin: 4rpx 10rpx 24rpx 22rpx;
+}
+.userinfo-name{
+  position:absolute;
+  top:44rpx;
+  color: #5B5B5B;
+  font-family: Segoe UI;
+  font-weight: Bold;
+  font-size: 15px;
+}
+.userinfo-money{
+  position:absolute;
+  top:90rpx;
+  color: #FF0000;
+  font-family: Segoe UI;
+  font-weight: Regular;
+  font-size: 15px;
+}
+
+.action-refresh{
+  margin:0rpx 0rpx 0rpx 14rpx;
+  width: 64rpx;
+  height: 64rpx;
+  float:right;
+}
+.action-invite{
+  margin:0rpx 42rpx 0rpx 14rpx;
+  width: 64rpx;
+  height: 64rpx;
+  float:right;
+}
+
+
+.invite-form{
+  width: 712rpx;
+  height: 496rpx;
+  position: fixed;
+  z-index: 20;
+  background-color: #FFFFFF;
+  border-width:2px;
+  border-style:solid;
+  border-color:#707070;
+  top:350rpx;
+  left:50%;
+  margin-left:-356rpx;
+}
+.invite-close{
+  width:120rpx;
+  height:120rpx;
+
+  position:absolute;
+  top:0rpx;
+  right:0.5px;
+  /* margin: 4rpx 4rpx 0rpx 0rpx; */
+}
+
+.invite-form input{
+  width: 532rpx;
+  height: 150rpx;
+
+  margin:164rpx auto 0rpx;
+  border-width:2px;
+  border-style:solid;
+  border-color:#000000;
+  padding-left:30px;
+}
+
+.invite-form button{
+  width: 278rpx;
+  height: 106rpx;
+
+  margin:44rpx auto 0rpx;
+  border-width:2px;
+  border-style:solid;
+  border-color:#000000;
+}

@@ -1,0 +1,9 @@
+<!--components/appearnings/appearnings.wxml-->
+<view>
+  <view class="earnings">
+    <view class="block-center earnings-item" wx:for="{{earningsList}}" wx:key="*this">
+      <text class="block-center earnings-timer">时间：{{item.time}}</text>
+      <text class="block-center earnings-earnings">收益金额：{{item.earnings}}</text>
+    </view>
+  </view>
+</view>

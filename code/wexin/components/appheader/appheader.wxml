@@ -1,0 +1,31 @@
+<!--pages/appheader/appheader.wxml-->
+<view>
+  <view class="header">
+    <view class="header-left">
+      <image class="userinfo-avatar" src="{{userInfo.avatar}}" bindtap='_showEarnings'></image>
+      <text class="userinfo-name">{{userInfo.name}}</text>
+      <text class="userinfo-money">金额：{{userInfo.money}}</text>
+    </view>
+    <view class="header-right">
+      <block wx:if="{{isShowInviteBtn}}" >
+        <image class="action-invite" src="/images/invite.png" ws:if="{{isShowInviteBtn}}" bindtap='_showInviteForm'></image>
+      </block>
+      <block wx:if="{{isShowWithdrawalBtn}}" >
+        <image class="action-refresh" src="/images/withdrawal.png" ></image>
+      </block>
+      <block wx:if="{{isShowPublishBtn}}" >
+        <image class="action-refresh" src="/images/publish.png" ></image>
+      </block>
+      <block wx:if="{{isShowRefreshBtn}}" >
+        <image class="action-refresh" src="/images/refresh.png" ></image>
+      </block>
+    </view>
+  </view>
+  <block wx:if="{{isShowInvite}}">
+    <view class="invite-form">
+        <image class="invite-close" src="/images/close.png" bindtap='_showInviteForm' ></image>
+        <input class="block-center" maxlength="10" placeholder="请输入邀请码" value="{{inviteCode}}" bindinput="_inviteFormInput"></input>
+        <button class="block-center">确定</button>
+    </view>
+  </block>
+</view>

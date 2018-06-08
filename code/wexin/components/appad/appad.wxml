@@ -1,0 +1,9 @@
+<!--components/ad/ad.wxml-->
+<view>
+  <view class="ad">
+    <view class="block-center ad-item" wx:for="{{adList}}" wx:key="*this">
+      <text class="block-center ad-timer">{{item.adTimer}}</text>
+      <image class="ad-image" src="{{item.adUrl}}" ></image>
+    </view>
+  </view>
+</view>

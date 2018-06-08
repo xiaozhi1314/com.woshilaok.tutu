@@ -1,21 +1,10 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="header">
-    <view class="header-left">
-      <image class="userinfo-avatar" src="{{userInfo.avatar}}"></image>
-      <text class="userinfo-name">{{userInfo.name}}</text>
-      <text class="userinfo-money">金额：{{userInfo.money}}</text>
-    </view>
-    <view class="header-right">
-      <image class="action-invite" src="../../images/invite.png" ></image>
-      <image class="action-refresh" src="../../images/refresh.png" ></image>
-      <image class="action-refresh" src="../../images/refresh.png" ></image>
-    </view>
-  </view>
-  <view class="ad">
-    <view class="block-center ad-item" wx:for="{{adList}}">
-      <text class="block-center ad-timer">{{item.adTimer}}</text>
-      <image class="ad-image" src="{{item.adUrl}}" ></image>
-    </view>
-  </view>
+  <app-header userInfo="{{userInfo}}" bind:clickAvatar="clickAvatar"></app-header>
+  <block wx:if="{{ isShowAd }}">
+    <app-ad adList="{{adList}}"></app-ad>
+  </block>
+  <block wx:if="{{isSHowEarnings}}">
+    <app-earnings earningsList="{{earningsList}}"></app-earnings>
+  </block>
 </view>
