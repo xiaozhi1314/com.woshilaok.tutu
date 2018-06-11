@@ -4,7 +4,16 @@
   <block wx:if="{{ isShowAd }}">
     <app-ad adList="{{adList}}"></app-ad>
   </block>
-  <block wx:if="{{isSHowEarnings}}">
+
+  <block wx:if="{{isShowEarnings}}">
     <app-earnings earningsList="{{earningsList}}"></app-earnings>
+  </block>
+
+  <block wx:if="{{isShowInviteEarnings}}">
+    <app-inviteearnings earningsList="{{inviteEarningsList}}"></app-inviteearnings>
+  </block>
+
+  <block wx:if="{{isShowContentproviderView}}">
+    <app-contentprovider></app-contentprovider>
   </block>
 </view>

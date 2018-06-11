@@ -91,6 +91,20 @@
   padding-left:30px;
 }
 
+.invite-form text{
+  width: 532rpx;
+  height: 150rpx;
+
+  margin:164rpx auto 0rpx;
+  border-style:none none solid;
+  border-color:#000000;
+  
+  color: #000000;
+  font-family: Segoe UI;
+  font-weight: bold;
+  font-size: 40px;
+}
+
 .invite-form button{
   width: 278rpx;
   height: 106rpx;

@@ -2,6 +2,8 @@
   "usingComponents": {
     "app-header": "/components/appheader/appheader",
     "app-ad": "/components/appad/appad",
-    "app-earnings": "/components/appearnings/appearnings"
+    "app-earnings": "/components/appearnings/appearnings",
+    "app-inviteearnings": "/components/appinviteearnings/appinviteearnings",
+    "app-contentprovider": "/components/appcontentprovider/appcontentprovider"
   }
 }

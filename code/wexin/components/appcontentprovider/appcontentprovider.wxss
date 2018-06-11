@@ -1,0 +1,25 @@
+/* components/appcontentprovider/appcontentprovider.wxss */
+.block-center{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.contentprovider-header{
+  color: #000000;
+  font-family: Segoe UI;
+  font-weight: bold;
+  font-size: 20px;
+}
+.contentprovider-header text{
+  padding:  25rpx 25rpx;
+}
+.text-select{
+  border-width:2px;
+  border-style:none none solid none;
+}
+
+.text-unselect{
+  border-width:2px;
+  border-color:#707070;
+  border-style:none none solid none;
+}

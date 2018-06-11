@@ -16,7 +16,7 @@ Page({
       name: '我是王宝强1',
       money: '102.01',
       avatar: '/images/logo.png',
-      userRole: USER_ROLE_DISTRIBUTORS
+      userRole: USER_ROLE_CONTENTPROVIDER
     },
     adList: [
       {adUrl: '../../images/ad_001.png', adTimer: 10},
@@ -49,15 +49,24 @@ Page({
       {time: '2018年6月8日', earnings: '0.0001'},
       {time: '2018年6月8日', earnings: '0.0001'},
       {time: '2018年6月8日', earnings: '0.0001'},
+    ],
+    inviteEarningsList: [
+      { time: '2018年6月8日', earnings: '0.0001', invitecode: '123456', user: '暗风大' },
+      { time: '2018年6月8日', earnings: '0.0001', invitecode: '123456', user: '暗风大' },
+      { time: '2018年6月8日', earnings: '0.0001', invitecode: '123456', user: '暗风大' },
+      { time: '2018年6月8日', earnings: '0.0001', invitecode: '123456', user: '暗风大' },
+      { time: '2018年6月8日', earnings: '0.0001', invitecode: '123456', user: '暗风大' },
+      { time: '2018年6月8日', earnings: '0.0001', invitecode: '123456', user: '暗风大' },
+      { time: '2018年6月8日', earnings: '0.0001', invitecode: '123456', user: '暗风大' },
+      { time: '2018年6月8日', earnings: '0.0001', invitecode: '123456', user: '暗风大' },
+      { time: '2018年6月8日', earnings: '0.0001', invitecode: '123456', user: '暗风大' },
     ], 
     isShowAd: false,
-    isSHowEarnings: true    
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+    isShowEarnings: false,
+    isShowInviteEarnings: false, 
+    isShowPublishEarnings: false, 
+
+    isShowContentproviderView: false,
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
@@ -79,13 +88,36 @@ Page({
         }
       })
     }
+    this.initView();
   },
-  clickAvatar: function(){
+  initView: function(){
+    // 判断用户角色
+    switch (this.data.userInfo.userRole) {
+      case USER_ROLE_DISTRIBUTORS:
+        this.switcDistributorslRole();
+        break;
+      case USER_ROLE_CONTENTPROVIDER:
+        this.switchContentproviderRole();
+        break;
+      case USER_ROLE_CONSUMERS:
+        break;
+      case USER_ROLE_NORMAL:
+      default:
+        this.setData({
+          isShowAd: true,
+          isShowEarnings: false
+        })
+        break;
+    }
+  },
+  clickAvatar: function () {
     // 判断用户角色
     switch(this.data.userInfo.userRole){
       case USER_ROLE_DISTRIBUTORS:
+        this.switcDistributorslRole();
         break;
       case USER_ROLE_CONTENTPROVIDER:
+        // this.switchContentproviderRole();
         break;
       case USER_ROLE_CONSUMERS:
         break;
@@ -98,7 +130,17 @@ Page({
   switchNormalRole: function(){
     this.setData({
       isShowAd: !this.data.isShowAd,
-      isSHowEarnings: !this.data.isSHowEarnings
+      isShowEarnings: !this.data.isShowEarnings
     })
-  }
+  }, 
+  switcDistributorslRole: function () {
+    this.setData({
+      isShowInviteEarnings: true
+    })
+  },
+  switchContentproviderRole: function(){
+    this.setData({
+      isShowContentproviderView: true
+    })
+  },
 })

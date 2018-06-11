@@ -1,0 +1,14 @@
+<!--components/appcontentprovider/appcontentprovider.wxml-->
+<view>
+  <view class="block-center contentprovider-header">
+  <text id="publish" class="{{ isShowPublishList ? 'text-select': 'text-unselect'}}" bindtap='_switchTab'>发布列表</text>
+  <text id="earnings" class="{{ isShowEarningsList ? 'text-select': 'text-unselect'}}" bindtap='_switchTab'>收益列表</text>
+  </view>
+  <view>
+    
+    <block wx:if="{{isShowInviteEarnings}}">
+      <app-inviteearnings earningsList="{{inviteEarningsList}}"></app-inviteearnings>
+    </block>
+
+  </view>
+</view>

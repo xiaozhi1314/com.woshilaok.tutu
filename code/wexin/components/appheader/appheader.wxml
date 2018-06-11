@@ -28,4 +28,10 @@
         <button class="block-center">确定</button>
     </view>
   </block>
+  <block wx:if="{{isShowInviteCode}}">
+    <view class="invite-form">
+        <image class="invite-close" src="/images/close.png" bindtap='_showInviteForm' ></image>
+        <text class="block-center">{{inviteCode}}</text> 
+    </view>
+  </block>
 </view>
