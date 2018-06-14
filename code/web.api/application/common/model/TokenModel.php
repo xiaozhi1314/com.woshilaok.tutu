@@ -7,7 +7,7 @@ use app\common\utils\SystemUtils;
 
 class TokenModel extends BaseModel
 {
-    const tableName = 'tt_token';
+    const tableName = 'token';
     const field = 'userid,token,platform,deviceid,expiretime,createtime,updatetime';
     const order = 'id desc';
 

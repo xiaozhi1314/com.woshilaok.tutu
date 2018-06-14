@@ -15,7 +15,7 @@ return [
     ],
 
     // 接口
-    '[api/tutu/v1]'       => [
+    '[tutu/v1]'       => [
         '/apiTest'              => ['tutu/index/apiTest'],               // 接口测试，没有特殊用途
         '/apiGetPassword'       => ['tutu/index/apiGetPassword'],        // 获取指定加密后的密文密码
         
@@ -30,11 +30,12 @@ return [
         // 其他相关接口
         '/apiWxDecodeData'          => ['tutu/Weixin/apiWxDecodeData'],                      // 微信小程序数据解密
         '/apiGetWxUserInfo'         => ['tutu/Weixin/apiGetWxUserInfo'],                     // 微信公众号用户信息
+        ''                          => ['tutu/index/apiTest'],
     ],
 
     // 后台接口
-    '[api/tutu/v1/admin]' => [
-        '/apiLogin'                 => 'admin/Login/apiLogin',                                      // 微课后台登陆接口
+    '[tutu/v1/admin]' => [
+        '/apiResourcesCreateInfo'              => ['tutu/Resources/apiCreateInfo'],               // 接口测试，没有特殊用途
         '/getQiniuUploadfileToken'  => 'admin/ResourcesUtils/getQiniuUploadfileToken',              // 微课后台获取七牛上传令牌接口
     ]
 ];

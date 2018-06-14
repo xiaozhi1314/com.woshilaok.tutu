@@ -14,6 +14,7 @@ class Base extends Controller
 {
     const CURL_TIMEOUT          = 10;   // curl超时时间pay\alipay\Logger
     const CURL_CONNECTTIMEOUT   = 10;   // curl连接超时时间
+    const TOKEN_EFFECTIVE_TIME  = 2*60*60; // token有效时间
 
     protected $userId = 0;
 
@@ -50,12 +51,16 @@ class Base extends Controller
      * @return boolean true：不需要验证， false：需要验证
      */
     protected function authenticationSkipAction(){
-        $action = $this->request->action();
-        $authenticationSkipActionInfo = Config::get('authentication_skip_action') ?? [];
-        if(in_array($action, $authenticationSkipActionInfo)){
-            return true;
+        // $action = $this->request->action(true);
+        $routeInfo = $this->request->routeInfo();
+        if(isset($routeInfo['rule']) && !empty(($routeInfo['rule']))){
+            $action = end($routeInfo['rule']);
+            $authenticationSkipActionInfo = Config::get('authentication_skip_action') ?? [];
+            if(!in_array($action, $authenticationSkipActionInfo)){
+                return false;
+            }
         }
-        return false;
+        return true;
     }
 
     /**
@@ -71,7 +76,8 @@ class Base extends Controller
             $code = MessageCode::MC_GENERAL_TOKEN_EMPTY;
         }else{
             $tokenInfo = TokenModel::getDataByToken($token);
-            if(empty($tokenInfo)){
+            $currentTimestamp = SystemUtils::getTimestamp();
+            if(empty($tokenInfo) || $tokenInfo['expiretime'] < $currentTimestamp){
                 $code = MessageCode::MC_GENERAL_TOKEN_INVALID;
             }else{
                 $this->userId = $tokenInfo['userid'] ?? 0;
@@ -94,14 +100,14 @@ class Base extends Controller
      */
     protected static function createToken($userId, $platform=null, $deviceId=null){
         $token = SystemUtils::generateToken();
-        $data = [
-            'token'    => $token,
-            'userid'   => $userId,
-            'platform' => $platform,
-            'deviceid' => $deviceId,
+        if(TokenModel::addData([
+            'token'      => $token,
+            'userid'     => $userId,
+            'platform'   => $platform,
+            'deviceid'   => $deviceId,
+            'expiretime' => intval(SystemUtils::getTimestamp()+self::TOKEN_EFFECTIVE_TIME),
             'createtime' => SystemUtils::getTimestamp(),
-        ];
-        if(TokenModel::addData($data)){
+        ])){
             return $token;
         }
         return null;

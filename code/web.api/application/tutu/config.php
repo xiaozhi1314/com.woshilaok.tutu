@@ -10,7 +10,7 @@ return [
         'apiTest',
         'apiLogin',
         'apiGetPassword',
-        'apiGetClubInviteInfo',
+        'apiResourcesCreateInfo1',
         'apiWxPayNotify',               // 微信支付通知
         'apiAliPayNotify',              // 支付宝支付通知
         'apiWxSmallProgramPayNotify',   // 微信小程序支付通知

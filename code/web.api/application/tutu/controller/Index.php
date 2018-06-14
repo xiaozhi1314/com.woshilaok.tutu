@@ -1,7 +1,12 @@
 <?php
 namespace app\tutu\controller;
 
-class Index
+use app\common\controller\Base;
+use app\common\model\BaseModel;
+use app\common\utils\SystemUtils;
+use app\common\utils\MessageCode;
+
+class Index extends Base
 {
     public function index(){
         return 'tutu-index';
@@ -23,7 +28,7 @@ class Index
         ];
         return $this->returnJson(true, 10000, '成功', $data);
     }
-    
+
     /**
      * 获取加密后的密码
      *
