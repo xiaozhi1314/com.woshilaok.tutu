@@ -10,7 +10,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.9.94",
 	"appid": "wx0b77e1f7be661f47",
-	"projectname": "wexin",
+	"projectname": "weixin",
 	"isGameTourist": false,
 	"condition": {
 		"search": {

@@ -7,7 +7,7 @@
   <view>
     
     <block wx:if="{{isShowInviteEarnings}}">
-      <app-inviteearnings earningsList="{{inviteEarningsList}}"></app-inviteearnings>
+      <app-publishearnings earningsList="{{inviteEarningsList}}"></app-publishearnings>
     </block>
 
   </view>

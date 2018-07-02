@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "app-inviteearnings": "/components/appinviteearnings/appinviteearnings"
+    "app-publishearnings": "/components/apppublishearnings/apppublishearnings"
   }
 }
